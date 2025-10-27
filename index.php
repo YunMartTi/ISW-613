@@ -20,10 +20,16 @@
 
         foreach ($folders as $folder) {
             $name = basename($folder); // nombre de la carpeta
-            $indexFile = $folder . '/index.html';
+            $indexHtml = $folder . '/index.html';
+            $indexPhp  = $folder . '/index.php';
 
-            if (file_exists($indexFile)) {
+            // Si existe index.html o index.php, mostrar el enlace
+            if (file_exists($indexHtml)) {
                 echo "<a href='$name/index.html' class='bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg shadow text-white font-semibold transition'>
+                        $name
+                      </a>";
+            } elseif (file_exists($indexPhp)) {
+                echo "<a href='$name/index.php' class='bg-green-600 hover:bg-green-500 px-4 py-2 rounded-lg shadow text-white font-semibold transition'>
                         $name
                       </a>";
             }
